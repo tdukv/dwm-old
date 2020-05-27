@@ -849,6 +849,11 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 				} else if (text[i] == 'd') {
 					drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
 					drw->scheme[ColBg] = scheme[SchemeNorm][ColBg];
+				} else if (text[i] == 'w') {
+					Clr swp;
+					swp = drw->scheme[ColFg];
+					drw->scheme[ColFg] = drw->scheme[ColBg];
+					drw->scheme[ColBg] = swp;
 				} else if (text[i] == 'r') {
 					int rx = atoi(text + ++i);
 					while (text[++i] != ',');
