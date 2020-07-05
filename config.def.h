@@ -87,6 +87,7 @@ static const Layout layouts[] = {
 	//	{ "===",      bstackhoriz },
 	{ "|M|",      centeredmaster },
 	//	{ ">M>",      centeredfloatingmaster },
+	{ NULL,       NULL },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ NULL,       NULL },
@@ -147,8 +148,8 @@ static Key keys[] =
    { MODKEY,   XK_t,   setlayout,   {.v = &layouts[0]} }, //tile
    { MODKEY,   XK_u,   setlayout,   {.v = &layouts[1]} }, //bstack
    { MODKEY,   XK_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
-   { MODKEY,   XK_f,   setlayout,   {.v = &layouts[3]} }, //float
-   { MODKEY,   XK_m,   setlayout,   {.v = &layouts[4]} }, //monocle
+   { MODKEY,   XK_f,   setlayout,   {.v = &layouts[4]} }, //float
+   { MODKEY,   XK_m,   setlayout,   {.v = &layouts[5]} }, //monocle
 
    { MODKEY,   XK_bracketleft,  cyclelayout, {.i = -1 } },
    { MODKEY,   XK_bracketright, cyclelayout, {.i = +1 } },

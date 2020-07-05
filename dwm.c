@@ -794,7 +794,7 @@ cyclelayout(const Arg *arg) {
 		if(l != layouts && (l - 1)->symbol)
 			setlayout(&((Arg) { .v = (l - 1) }));
 		else
-			setlayout(&((Arg) { .v = &layouts[LENGTH(layouts) - 2] }));
+			setlayout(&((Arg) { .v = &layouts[LENGTH(layouts) - 5] }));
 	}
 }
 
