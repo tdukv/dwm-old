@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat <<EOF | xmenu &
+cat <<EOF | xmenu
 []= Right Stack Layout	0
 TTT Bottom Stack Layout	1
 |M| Centered Maser Layout	2
