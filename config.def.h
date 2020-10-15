@@ -169,6 +169,8 @@ static Key keys[] =
    { MODKEY|Mod1Mask|ShiftMask, XK_Up,    moveresize, {.v = "0x 0y 0w -25h" } },
    { MODKEY|Mod1Mask|ShiftMask, XK_Right, moveresize, {.v = "0x 0y 25w 0h" } },
    { MODKEY|Mod1Mask|ShiftMask, XK_Left,  moveresize, {.v = "0x 0y -25w 0h" } },
+   { MODKEY|Mod1Mask|ShiftMask, XK_Page_Up,   moveresize, {.v = "0x 0y -25w -25h" } },
+   { MODKEY|Mod1Mask|ShiftMask, XK_Page_Down, moveresize, {.v = "0x 0y 25w 25h" } },
 
    { MODKEY,             XK_0,    view,    {.ui = ~0 } },
    { MODKEY|ShiftMask,   XK_0,    tag,     {.ui = ~0 } },
