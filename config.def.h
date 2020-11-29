@@ -152,7 +152,7 @@ static Key keys[] =
    { MODKEY,   XK_t,   setlayout,   {.v = &layouts[0]} }, //tile
    { MODKEY,   XK_u,   setlayout,   {.v = &layouts[1]} }, //bstack
    { MODKEY,   XK_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
-   { MODKEY|ShiftMask,   XK_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
+   { MODKEY|Mod1Mask,   XK_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
    { MODKEY,   XK_f,   setlayout,   {.v = &layouts[5]} }, //float
    { MODKEY,   XK_m,   setlayout,   {.v = &layouts[6]} }, //monocle
 
