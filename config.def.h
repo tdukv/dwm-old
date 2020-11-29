@@ -90,7 +90,7 @@ static const Layout layouts[] = {
 	{ "TTT",      bstack },
 	//	{ "===",      bstackhoriz },
 	{ "|M|",      centeredmaster },
-	//	{ ">M>",      centeredfloatingmaster },
+	{ ">M>",      centeredfloatingmaster },
 	{ NULL,       NULL },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
@@ -152,8 +152,9 @@ static Key keys[] =
    { MODKEY,   XK_t,   setlayout,   {.v = &layouts[0]} }, //tile
    { MODKEY,   XK_u,   setlayout,   {.v = &layouts[1]} }, //bstack
    { MODKEY,   XK_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
-   { MODKEY,   XK_f,   setlayout,   {.v = &layouts[4]} }, //float
-   { MODKEY,   XK_m,   setlayout,   {.v = &layouts[5]} }, //monocle
+   { MODKEY|ShiftMask,   XK_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
+   { MODKEY,   XK_f,   setlayout,   {.v = &layouts[5]} }, //float
+   { MODKEY,   XK_m,   setlayout,   {.v = &layouts[6]} }, //monocle
 
    { MODKEY,   XK_bracketleft,  cyclelayout, {.i = -1 } },
    { MODKEY,   XK_bracketright, cyclelayout, {.i = +1 } },
