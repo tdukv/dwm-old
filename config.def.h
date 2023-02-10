@@ -133,9 +133,9 @@ static Key keys[] =
    { MODKEY,           XK_Left,      setmfact,   {.f = -0.05} },
    { MODKEY,           XK_Right,     setmfact,   {.f = +0.05} },
 
-   { MODKEY|ShiftMask, XK_Left,      setcfact,   {.f = +0.25} },
-   { MODKEY|ShiftMask, XK_Right,     setcfact,   {.f = -0.25} },
-   { MODKEY|ShiftMask, XK_BackSpace, setcfact,   {.f =  0.00} },
+   { MODKEY|ControlMask, XK_Left,      setcfact,   {.f = +0.25} },
+   { MODKEY|ControlMask, XK_Right,     setcfact,   {.f = -0.25} },
+   { MODKEY|ControlMask, XK_BackSpace, setcfact,   {.f =  0.00} },
 
    { MODKEY,           XK_Return, zoom,           {0} },
    { MODKEY,           XK_Tab,    view,           {0} },
@@ -176,8 +176,8 @@ static Key keys[] =
    { MODKEY,             XK_0,    view,    {.ui = ~0 } },
    { MODKEY|ShiftMask,   XK_0,    tag,     {.ui = ~0 } },
 
-   { MODKEY|ControlMask, XK_Down,    pushdown,    {0} },
-   { MODKEY|ControlMask, XK_Up,      pushup,      {0} },
+   { MODKEY|ShiftMask, XK_Down,    pushdown,    {0} },
+   { MODKEY|ShiftMask, XK_Up,      pushup,      {0} },
 
    { MODKEY|ControlMask, XK_Right,   shiftview,  { .i = +1 } },
    { MODKEY|ControlMask, XK_Left,    shiftview,  { .i = -1 } },
