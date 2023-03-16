@@ -115,95 +115,96 @@ static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-c", scratchpadname, "-g", "120x34", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
+#include "keycodes.h"
 static Key keys[] =
   {
    /* modifier         key        function       argument */
-   { MODKEY,           XK_p,      spawn,         {.v = dmenucmd } },
-   { MODKEY|ShiftMask, XK_Return, spawn,         {.v = termcmd } },
-   { MODKEY,           XK_grave,  togglescratch, {.v = scratchpadcmd } },
+   { MODKEY,           MY_p,      spawn,         {.v = dmenucmd } },
+   { MODKEY|ShiftMask, MY_Return, spawn,         {.v = termcmd } },
+   { MODKEY,           MY_grave,  togglescratch, {.v = scratchpadcmd } },
 
-   { MODKEY,           XK_b,      togglebar,     {0} },
+   { MODKEY,           MY_b,      togglebar,     {0} },
 
-   { MODKEY,           XK_Down,   focusstack,    {.i = +1 } },
-   { MODKEY,           XK_Up,     focusstack,    {.i = -1 } },
+   { MODKEY,           MY_Down,   focusstack,    {.i = +1 } },
+   { MODKEY,           MY_Up,     focusstack,    {.i = -1 } },
 
-   { MODKEY,           XK_i,      incnmaster,    {.i = +1 } },
-   { MODKEY,           XK_d,      incnmaster,    {.i = -1 } },
+   { MODKEY,           MY_i,      incnmaster,    {.i = +1 } },
+   { MODKEY,           MY_d,      incnmaster,    {.i = -1 } },
 
-   { MODKEY,           XK_Left,      setmfact,   {.f = -0.05} },
-   { MODKEY,           XK_Right,     setmfact,   {.f = +0.05} },
+   { MODKEY,           MY_Left,      setmfact,   {.f = -0.05} },
+   { MODKEY,           MY_Right,     setmfact,   {.f = +0.05} },
 
-   { MODKEY|ControlMask, XK_Left,      setcfact,   {.f = +0.25} },
-   { MODKEY|ControlMask, XK_Right,     setcfact,   {.f = -0.25} },
-   { MODKEY|ControlMask, XK_BackSpace, setcfact,   {.f =  0.00} },
+   { MODKEY|ShiftMask, MY_Left,      setcfact,   {.f = +0.25} },
+   { MODKEY|ShiftMask, MY_Right,     setcfact,   {.f = -0.25} },
+   { MODKEY|ShiftMask, MY_BackSpace, setcfact,   {.f =  0.00} },
 
-   { MODKEY,           XK_Return, zoom,           {0} },
-   { MODKEY,           XK_Tab,    view,           {0} },
-   { MODKEY|ShiftMask, XK_c,      killclient,     {0} },
+   { MODKEY,           MY_Return, zoom,           {0} },
+   { MODKEY,           MY_Tab,    view,           {0} },
+   { MODKEY|ShiftMask, MY_c,      killclient,     {0} },
 
-   /* { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, */
-   /* { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[1]} }, */
-   /* { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[2]} }, */
-   /* { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} }, */
-   /* { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} }, */
-   /* { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[5]} }, */
-   /* { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[6]} }, */
+   /* { MODKEY,                       MY_t,      setlayout,      {.v = &layouts[0]} }, */
+   /* { MODKEY,                       MY_u,      setlayout,      {.v = &layouts[1]} }, */
+   /* { MODKEY,                       MY_o,      setlayout,      {.v = &layouts[2]} }, */
+   /* { MODKEY,                       MY_u,      setlayout,      {.v = &layouts[3]} }, */
+   /* { MODKEY,                       MY_o,      setlayout,      {.v = &layouts[4]} }, */
+   /* { MODKEY,                       MY_f,      setlayout,      {.v = &layouts[5]} }, */
+   /* { MODKEY,                       MY_m,      setlayout,      {.v = &layouts[6]} }, */
 
-   { MODKEY,   XK_t,   setlayout,   {.v = &layouts[0]} }, //tile
-   { MODKEY,   XK_u,   setlayout,   {.v = &layouts[1]} }, //bstack
-   { MODKEY,   XK_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
-   { MODKEY|Mod1Mask,   XK_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
-   { MODKEY,   XK_f,   setlayout,   {.v = &layouts[5]} }, //float
-   { MODKEY,   XK_m,   setlayout,   {.v = &layouts[6]} }, //monocle
+   { MODKEY,   MY_t,   setlayout,   {.v = &layouts[0]} }, //tile
+   { MODKEY,   MY_u,   setlayout,   {.v = &layouts[1]} }, //bstack
+   { MODKEY,   MY_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
+   { MODKEY|Mod1Mask,   MY_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
+   { MODKEY,   MY_f,   setlayout,   {.v = &layouts[5]} }, //float
+   { MODKEY,   MY_m,   setlayout,   {.v = &layouts[6]} }, //monocle
 
-   { MODKEY,   XK_bracketleft,  cyclelayout, {.i = -1 } },
-   { MODKEY,   XK_bracketright, cyclelayout, {.i = +1 } },
+   { MODKEY,   MY_bracketleft,  cyclelayout, {.i = -1 } },
+   { MODKEY,   MY_bracketright, cyclelayout, {.i = +1 } },
 
-   { MODKEY|ShiftMask,   XK_space,  setlayout,      {0} },
-   { MODKEY,             XK_space,  togglefloating, {0} },
+   { MODKEY|ShiftMask,   MY_space,  setlayout,      {0} },
+   { MODKEY,             MY_space,  togglefloating, {0} },
 
-   { MODKEY|Mod1Mask,           XK_Down,  moveresize, {.v = "0x 25y 0w 0h" } },
-   { MODKEY|Mod1Mask,           XK_Up,    moveresize, {.v = "0x -25y 0w 0h" } },
-   { MODKEY|Mod1Mask,           XK_Right, moveresize, {.v = "25x 0y 0w 0h" } },
-   { MODKEY|Mod1Mask,           XK_Left,  moveresize, {.v = "-25x 0y 0w 0h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Down,  moveresize, {.v = "0x 0y 0w 25h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Up,    moveresize, {.v = "0x 0y 0w -25h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Right, moveresize, {.v = "0x 0y 25w 0h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Left,  moveresize, {.v = "0x 0y -25w 0h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Page_Up,   moveresize, {.v = "0x 0y -25w -25h" } },
-   { MODKEY|Mod1Mask|ShiftMask, XK_Page_Down, moveresize, {.v = "0x 0y 25w 25h" } },
+   { MODKEY|Mod1Mask,           MY_Down,  moveresize, {.v = "0x 25y 0w 0h" } },
+   { MODKEY|Mod1Mask,           MY_Up,    moveresize, {.v = "0x -25y 0w 0h" } },
+   { MODKEY|Mod1Mask,           MY_Right, moveresize, {.v = "25x 0y 0w 0h" } },
+   { MODKEY|Mod1Mask,           MY_Left,  moveresize, {.v = "-25x 0y 0w 0h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Down,  moveresize, {.v = "0x 0y 0w 25h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Up,    moveresize, {.v = "0x 0y 0w -25h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Right, moveresize, {.v = "0x 0y 25w 0h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Left,  moveresize, {.v = "0x 0y -25w 0h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Page_Up,   moveresize, {.v = "0x 0y -25w -25h" } },
+   { MODKEY|Mod1Mask|ShiftMask, MY_Page_Down, moveresize, {.v = "0x 0y 25w 25h" } },
 
-   { MODKEY,             XK_0,    view,    {.ui = ~0 } },
-   { MODKEY|ShiftMask,   XK_0,    tag,     {.ui = ~0 } },
+   { MODKEY,             MY_0,    view,    {.ui = ~0 } },
+   { MODKEY|ShiftMask,   MY_0,    tag,     {.ui = ~0 } },
 
-   { MODKEY|ShiftMask, XK_Down,    pushdown,    {0} },
-   { MODKEY|ShiftMask, XK_Up,      pushup,      {0} },
+   { MODKEY|ShiftMask, MY_Down,    pushdown,    {0} },
+   { MODKEY|ShiftMask, MY_Up,      pushup,      {0} },
 
-   { MODKEY|ControlMask, XK_Right,   shiftview,  { .i = +1 } },
-   { MODKEY|ControlMask, XK_Left,    shiftview,  { .i = -1 } },
+   /* { MODKEY|ControlMask, MY_Right,   shiftview,  { .i = +1 } }, */
+   /* { MODKEY|ControlMask, MY_Left,    shiftview,  { .i = -1 } }, */
 
-   { MODKEY,             XK_Page_Up,     focusmon,    {.i = -1 } },
-   { MODKEY,             XK_Page_Down,   focusmon,    {.i = +1 } },
-   { MODKEY|ShiftMask,   XK_Page_Up,     tagmon,      {.i = -1 } },
-   { MODKEY|ShiftMask,   XK_Page_Down,   tagmon,      {.i = +1 } },
+   { MODKEY,             MY_Page_Up,     focusmon,    {.i = -1 } },
+   { MODKEY,             MY_Page_Down,   focusmon,    {.i = +1 } },
+   { MODKEY|ShiftMask,   MY_Page_Up,     tagmon,      {.i = -1 } },
+   { MODKEY|ShiftMask,   MY_Page_Down,   tagmon,      {.i = +1 } },
 
-   { MODKEY|ShiftMask,   XK_Home,        setborderpx, {.i = -1 } },
-   { MODKEY|ShiftMask,   XK_End,         setborderpx, {.i = +1 } },
-   { MODKEY|ShiftMask,   XK_Delete,      setborderpx, {.i = 0 } },
+   { MODKEY|ShiftMask,   MY_Home,        setborderpx, {.i = -1 } },
+   { MODKEY|ShiftMask,   MY_End,         setborderpx, {.i = +1 } },
+   { MODKEY|ShiftMask,   MY_Delete,      setborderpx, {.i = 0 } },
 
-   { MODKEY,               XK_F5,     xrdb,           {.v = NULL } },
+   { MODKEY,               MY_F5,     xrdb,           {.v = NULL } },
 
-   TAGKEYS(                        XK_1,                      0)
-   TAGKEYS(                        XK_2,                      1)
-   TAGKEYS(                        XK_3,                      2)
-   TAGKEYS(                        XK_4,                      3)
-   TAGKEYS(                        XK_5,                      4)
-   TAGKEYS(                        XK_6,                      5)
-   TAGKEYS(                        XK_7,                      6)
-   TAGKEYS(                        XK_8,                      7)
-   TAGKEYS(                        XK_9,                      8)
+   TAGKEYS(                        MY_1,                      0)
+   TAGKEYS(                        MY_2,                      1)
+   TAGKEYS(                        MY_3,                      2)
+   TAGKEYS(                        MY_4,                      3)
+   TAGKEYS(                        MY_5,                      4)
+   TAGKEYS(                        MY_6,                      5)
+   TAGKEYS(                        MY_7,                      6)
+   TAGKEYS(                        MY_8,                      7)
+   TAGKEYS(                        MY_9,                      8)
 
-   { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+   { MODKEY|ShiftMask,             MY_q,      quit,           {0} },
 };
 
 /* button definitions */
