@@ -3,6 +3,11 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
+static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -84,11 +89,22 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#include "vanitygaps.c"
+
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
+	{ "[@]",      spiral },
+	{ "[\\]",     dwindle },
+	{ "H[]",      deck },
 	{ "TTT",      bstack },
-	//	{ "===",      bstackhoriz },
+	{ "===",      bstackhoriz },
+	{ "HHH",      grid },
+	{ "###",      nrowgrid },
+	{ "---",      horizgrid },
+	{ ":::",      gaplessgrid },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 	{ NULL,       NULL },
@@ -173,6 +189,23 @@ static Key keys[] =
    { MODKEY|Mod1Mask|ShiftMask, MY_Left,  moveresize, {.v = "0x 0y -25w 0h" } },
    { MODKEY|Mod1Mask|ShiftMask, MY_Page_Up,   moveresize, {.v = "0x 0y -25w -25h" } },
    { MODKEY|Mod1Mask|ShiftMask, MY_Page_Down, moveresize, {.v = "0x 0y 25w 25h" } },
+
+   { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+   { MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
+   { MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 
    { MODKEY,             MY_0,    view,    {.ui = ~0 } },
    { MODKEY|ShiftMask,   MY_0,    tag,     {.ui = ~0 } },
