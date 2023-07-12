@@ -97,13 +97,13 @@ static const Layout layouts[] = {
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
+	/*{ "===",      bstackhoriz },*/
 	{ "HHH",      grid },
 	{ "###",      nrowgrid },
 	{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
 	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
+	/*{ ">M>",      centeredfloatingmaster },*/
 	{ NULL,       NULL },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
@@ -164,11 +164,10 @@ static Key keys[] =
    /* { MODKEY,                       MY_m,      setlayout,      {.v = &layouts[6]} }, */
 
    { MODKEY,   MY_t,   setlayout,   {.v = &layouts[0]} }, //tile
-   { MODKEY,   MY_u,   setlayout,   {.v = &layouts[1]} }, //bstack
-   { MODKEY,   MY_y,   setlayout,   {.v = &layouts[2]} }, //cntrmstr
-   { MODKEY|Mod1Mask,   MY_y,   setlayout,   {.v = &layouts[3]} }, //cftntrmstr
-   { MODKEY,   MY_f,   setlayout,   {.v = &layouts[5]} }, //float
-   { MODKEY,   MY_m,   setlayout,   {.v = &layouts[6]} }, //monocle
+   { MODKEY,   MY_u,   setlayout,   {.v = &layouts[4]} }, //bstack
+   { MODKEY,   MY_y,   setlayout,   {.v = &layouts[9]} }, //cntrmstr
+   { MODKEY,   MY_f,   setlayout,   {.v = &layouts[11]} }, //float
+   { MODKEY,   MY_m,   setlayout,   {.v = &layouts[12]} }, //monocle
 
    { MODKEY,   MY_bracketleft,  cyclelayout, {.i = -1 } },
    { MODKEY,   MY_bracketright, cyclelayout, {.i = +1 } },
@@ -193,14 +192,14 @@ static Key keys[] =
    { MODKEY|Mod1Mask|ShiftMask,    MY_i,      incrigaps,      {.i = -1 } },
    { MODKEY|Mod1Mask,              MY_o,      incrogaps,      {.i = +1 } },
    { MODKEY|Mod1Mask|ShiftMask,    MY_o,      incrogaps,      {.i = -1 } },
-   { MODKEY|Mod1Mask,              MY_6,      incrihgaps,     {.i = +1 } },
-   { MODKEY|Mod1Mask|ShiftMask,    MY_6,      incrihgaps,     {.i = -1 } },
-   { MODKEY|Mod1Mask,              MY_7,      incrivgaps,     {.i = +1 } },
-   { MODKEY|Mod1Mask|ShiftMask,    MY_7,      incrivgaps,     {.i = -1 } },
-   { MODKEY|Mod1Mask,              MY_8,      incrohgaps,     {.i = +1 } },
-   { MODKEY|Mod1Mask|ShiftMask,    MY_8,      incrohgaps,     {.i = -1 } },
-   { MODKEY|Mod1Mask,              MY_9,      incrovgaps,     {.i = +1 } },
-   { MODKEY|Mod1Mask|ShiftMask,    MY_9,      incrovgaps,     {.i = -1 } },
+   /* { MODKEY|Mod1Mask,              MY_6,      incrihgaps,     {.i = +1 } }, */
+   /* { MODKEY|Mod1Mask|ShiftMask,    MY_6,      incrihgaps,     {.i = -1 } }, */
+   /* { MODKEY|Mod1Mask,              MY_7,      incrivgaps,     {.i = +1 } }, */
+   /* { MODKEY|Mod1Mask|ShiftMask,    MY_7,      incrivgaps,     {.i = -1 } }, */
+   /* { MODKEY|Mod1Mask,              MY_8,      incrohgaps,     {.i = +1 } }, */
+   /* { MODKEY|Mod1Mask|ShiftMask,    MY_8,      incrohgaps,     {.i = -1 } }, */
+   /* { MODKEY|Mod1Mask,              MY_9,      incrovgaps,     {.i = +1 } }, */
+   /* { MODKEY|Mod1Mask|ShiftMask,    MY_9,      incrovgaps,     {.i = -1 } }, */
    { MODKEY|Mod1Mask,              MY_0,      togglegaps,     {0} },
    { MODKEY|Mod1Mask|ShiftMask,    MY_0,      defaultgaps,    {0} },
 
