@@ -151,6 +151,7 @@ struct Monitor {
 	unsigned int tagset[2];
 	int showbar;
 	int topbar;
+	int enablegaps;
 	Client *clients;
 	Client *sel;
 	Client *stack;
@@ -277,6 +278,35 @@ static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void xrdb(const Arg *arg);
 static void zoom(const Arg *arg);
 
+/* Key binding functions */
+static void defaultgaps(const Arg *arg);
+static void incrgaps(const Arg *arg);
+static void incrigaps(const Arg *arg);
+static void incrogaps(const Arg *arg);
+static void incrohgaps(const Arg *arg);
+static void incrovgaps(const Arg *arg);
+static void incrihgaps(const Arg *arg);
+static void incrivgaps(const Arg *arg);
+static void togglegaps(const Arg *arg);
+/* Layouts (delete the ones you do not need) */
+static void bstack(Monitor *m);
+static void bstackhoriz(Monitor *m);
+static void centeredmaster(Monitor *m);
+static void centeredfloatingmaster(Monitor *m);
+static void deck(Monitor *m);
+static void dwindle(Monitor *m);
+static void fibonacci(Monitor *m, int s);
+static void grid(Monitor *m);
+static void gaplessgrid(Monitor *m);
+static void horizgrid(Monitor *m);
+static void nrowgrid(Monitor *m);
+static void spiral(Monitor *m);
+static void tile(Monitor *m);
+/* Internals */
+static void getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc);
+static void getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int *mr, int *sr);
+static void setgaps(int oh, int ov, int ih, int iv);
+
 static pid_t getparentprocess(pid_t p);
 static int isdescprocess(pid_t p, pid_t c);
 static Client *swallowingclient(Window w);
@@ -331,7 +361,12 @@ struct Pertag {
 	unsigned int sellts[LENGTH(tags) + 1]; /* selected layouts */
 	const Layout *ltidxs[LENGTH(tags) + 1][2]; /* matrix of tags and layouts indexes  */
 	int showbars[LENGTH(tags) + 1]; /* display bar for the current tag */
+	int enablegaps[LENGTH(tags) + 1];
 };
+
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#define PERTAG_PATCH 1
+#include "vanitygaps.c"
 
 static unsigned int scratchtag = 1 << LENGTH(tags);
 
@@ -760,6 +795,7 @@ createmon(void)
 	m->mfact = mfact;
 	m->nmaster = nmaster;
 	m->showbar = showbar;
+	m->enablegaps = enablegaps;
 	m->topbar = topbar;
 	m->gappih = gappih;
 	m->gappiv = gappiv;
@@ -781,6 +817,7 @@ createmon(void)
 		m->pertag->sellts[i] = m->sellt;
 
 		m->pertag->showbars[i] = m->showbar;
+		m->pertag->enablegaps[i] = m->enablegaps;
 	}
 
 	return m;
