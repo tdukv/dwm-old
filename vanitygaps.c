@@ -748,10 +748,10 @@ nrowgrid(Monitor *m)
 }
 
 /*
- * Default tile layout + gaps
+ * Default tile layout + gaps + left/right stack placement
  */
 static void
-tile(Monitor *m)
+tile(Monitor *m, int leftstack)
 {
 	unsigned int i, n;
 	int oh, ov, ih, iv;
@@ -774,7 +774,10 @@ tile(Monitor *m)
 	if (m->nmaster && n > m->nmaster) {
 		sw = (mw - iv) * (1 - m->mfact);
 		mw = mw - iv - sw;
-		sx = mx + mw + iv;
+		if (leftstack)
+			mx = sx + sw + iv;
+		else
+			sx = mx + mw + iv;
 	}
 
 	getfacts(m, mh, sh, &mfacts, &sfacts, &mrest, &srest);
@@ -787,4 +790,16 @@ tile(Monitor *m)
 			resize(c, sx, sy, sw - (2*c->bw), sh * (c->cfact / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), 0);
 			sy += HEIGHT(c) + ih;
 		}
+}
+
+static void
+rightstack(Monitor *m)
+{
+	tile(m, 0);
+}
+
+static void
+leftstack(Monitor *m)
+{
+	tile(m, 1);
 }

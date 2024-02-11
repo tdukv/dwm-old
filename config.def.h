@@ -92,7 +92,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[]=",      rightstack },    /* first entry is default */
+	{ "=[]",      leftstack  },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
@@ -166,10 +167,10 @@ static Key keys[] =
    /* { MODKEY,                       MY_m,      setlayout,      {.v = &layouts[6]} }, */
 
    { MODKEY,   MY_t,   setlayout,   {.v = &layouts[0]} }, //tile
-   { MODKEY,   MY_u,   setlayout,   {.v = &layouts[4]} }, //bstack
-   { MODKEY,   MY_y,   setlayout,   {.v = &layouts[9]} }, //cntrmstr
-   { MODKEY,   MY_f,   setlayout,   {.v = &layouts[11]} }, //float
-   { MODKEY,   MY_m,   setlayout,   {.v = &layouts[12]} }, //monocle
+   { MODKEY,   MY_u,   setlayout,   {.v = &layouts[5]} }, //bstack
+   { MODKEY,   MY_y,   setlayout,   {.v = &layouts[10]} }, //cntrmstr
+   { MODKEY,   MY_f,   setlayout,   {.v = &layouts[12]} }, //float
+   { MODKEY,   MY_m,   setlayout,   {.v = &layouts[13]} }, //monocle
 
    { MODKEY,   MY_bracketleft,  cyclelayout, {.i = -1 } },
    { MODKEY,   MY_bracketright, cyclelayout, {.i = +1 } },

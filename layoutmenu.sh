@@ -1,17 +1,18 @@
 #!/bin/sh
 
 cat <<EOF | xmenu
-[]= Tile	0
-[@] Spiral	1
-[\] Dwindle	2
-H[] Deck	3
-TTT Bottom Stack	4
-HHH Grid	5
-### N Row Grid	6
---- Horizontal Grid	7
-::: Gapless Grid	8
-|M| Dentered Master	9
+[]= Right stack	0
+=[] Left stack	1
+[@] Spiral	2
+[\] Dwindle	3
+H[] Deck	4
+TTT Bottom Stack	5
+HHH Grid	6
+### N Row Grid	7
+--- Horizontal Grid	8
+::: Gapless Grid	9
+|M| Centered Master	10
 
-><> Floating	11
-[M] monocle	12
+><> Floating	12
+[M] monocle	13
 EOF
